@@ -1,4 +1,5 @@
 from PySimpleGUI import FILE_TYPES_ALL_FILES
+from sys import platform
 # Configuration options
 
 database_file:str = ''
@@ -113,3 +114,9 @@ csv_file_ext:tuple = (('Comma Separated Values','*.csv'),(FILE_TYPES_ALL_FILES[0
 pdf_file_ext:tuple = (("Adobe Acrobat File",'*.pdf'),(FILE_TYPES_ALL_FILES[0]))
 img_file_ext:tuple = (("All supported formats",'*.png *.jpg *.bmp'),(FILE_TYPES_ALL_FILES[0]))
 
+# Program logo
+
+if platform.startswith('win32'):
+    prog_logo = '.\splash\logo.png'
+else:
+    prog_logo = './splash/logo.png'
