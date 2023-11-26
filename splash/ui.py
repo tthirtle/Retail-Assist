@@ -17,4 +17,4 @@ win_layout = [
     [col]
 ]
 
-window = sg.Window('',win_layout,text_justification='center')
+window = sg.Window('',win_layout)
