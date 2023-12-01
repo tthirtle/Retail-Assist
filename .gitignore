@@ -170,3 +170,4 @@ thumbs.db
 *.db
 *.sqlite
 !/splash/logo.png
+*.dat
