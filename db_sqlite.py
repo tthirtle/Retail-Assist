@@ -1,5 +1,5 @@
 import sqlite3
-from _global import database_file,item
+from _global import database_file,item,store
 
 def create_db():
     with sqlite3.connect(database_file) as con:
@@ -49,6 +49,15 @@ def create_db():
                 PRIMARY KEY("key" AUTOINCREMENT)
                 )"""
         )
+        # Create Brand Table
+        cur.execute(
+            """CREATE TABLE "brands" (
+            "key"   INTEGER,
+            "brand" TEXT,
+            "code,  TEXT,
+            PRIMARY KEY("key" AUTOINCREMENT)
+            )"""
+        )
 
 def add_item():
     with sqlite3.connect(database_file) as con:
@@ -61,3 +70,27 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?);""",
         )
 
 def add_store():
+    with sqlite3.connect(database_file) as con:
+        cur = con.cursor()
+        cur.execute(
+            """INSERT INTO "main"."store"
+                ("name","number","address 1","address 2","city","state","zip","tel","fax","other")
+                VALUES (?,?,?,?,?,?,?,?,?,?);""",
+                (store.get_name(),store.get_number(),store.get_add1(),store.get_add2(),store.get_city(),store.get_state(),store.get_zip(),store.get_tel(),store.get_tel(),store.get_fax(),store.get_other())
+        )
+
+def brand_check(upc:str):
+    from _global import auto_brand_lookup
+    if auto_brand_lookup == False or len(upc) != 11:
+        return
+    lookup = upc[:6]
+    with sqlite3.connect(database_file) as con:
+        cur = con.cursor()
+        try:
+            brand = cur.execute(
+            """SELECT "brand" FROM "brands" WHERE "code" = ?""",(lookup)
+            )
+        except:
+            return ''
+        else:
+            return brand

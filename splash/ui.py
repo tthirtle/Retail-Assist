@@ -17,4 +17,4 @@ win_layout = [
     [col]
 ]
 
-window = sg.Window('',win_layout,enable_close_attempted_event=True)
+window = sg.Window('',win_layout,enable_close_attempted_event=True,finalize=True,auto_close=True,auto_close_duration=3,no_titlebar=True)

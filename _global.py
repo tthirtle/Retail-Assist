@@ -6,6 +6,7 @@ database_file:str = ''
 use_alt_description:bool = True
 config_file:str = "config.ini"
 single_user_mode:bool = True
+auto_brand_lookup:bool = True
 
 logo_file:str = ''
 use_logo:bool = True
@@ -81,7 +82,7 @@ class item:
 current_store = None
 
 class store:
-    def __init__(self,name:str,number:str,add1:str=None,add2:str=None,city:str=None,state:str=None,zip:str=None) -> None:
+    def __init__(self,name:str,number:str,add1:str=None,add2:str=None,city:str=None,state:str=None,zip:str=None,tel:str=None,fax:str=None,other:str=None) -> None:
         self.name = name
         self.number = number
         self.add1 = add1
@@ -89,6 +90,9 @@ class store:
         self.city = city
         self.state = state
         self.zip = zip
+        self.tel = tel
+        self.fax = fax
+        self.other = other
     def get_name(self):
         return self.name
     def get_number(self):
@@ -105,6 +109,12 @@ class store:
         return self.zip
     def get_address_full(self):
         return f"{self.add1}\n{self.add2}\n{self.city} {self.zip}"
+    def get_tel(self):
+        return self.tel
+    def get_fax(self):
+        return self.fax
+    def get_other(self):
+        return self.other
 
 
 # File extensions
@@ -116,7 +126,10 @@ img_file_ext:tuple = (("All supported formats",'*.png *.jpg *.bmp'),(FILE_TYPES_
 
 # Program logo
 
-if platform.startswith('win32'):
-    prog_logo = '.\splash\logo.png'
-else:
-    prog_logo = './splash/logo.png'
+# if platform.startswith('win32'):
+#     prog_logo = '.\splash\logo.png'
+# else:
+#     prog_logo = './splash/logo.png'
+
+
+prog_logo = '.\splash\logo.png'

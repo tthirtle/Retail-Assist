@@ -1,10 +1,6 @@
 import item.add.ui as ui
-import csv
+from db_sqlite import brand_check
 
 def win_read(event,value):
     if event == 'upc' and len(value.get('upc')) == 11:
-        brand_check(value.get('upc'))
-
-def brand_check(upc):
-    codes = []
-    brand = ''
+        brand_check(value.get*)

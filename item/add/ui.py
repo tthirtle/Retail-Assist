@@ -29,5 +29,3 @@ layout = [
 ]
 
 window = sg.Window('Add item',layout,finalize=True,enable_close_attempted_event=True)
-
-window.read()

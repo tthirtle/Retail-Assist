@@ -28,5 +28,4 @@ layout = [
     [add_button,cancel_button]
 ]
 
-window = sg.Window("Add store",layout,enable_close_attempted_event=True,finalize=True)
-window.hide()
+window = sg.Window("Add store",layout,enable_close_attempted_event=True)
