@@ -3,4 +3,7 @@ from db_sqlite import brand_check
 
 def win_read(event,value):
     if event == 'upc' and len(value.get('upc')) == 11:
-        brand_check(value.get*)
+        brand_check(value.get('upc'))
+    if event == 'add':
+
+def field_check(upc:str,desc):

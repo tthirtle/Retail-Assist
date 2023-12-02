@@ -19,13 +19,17 @@ size_label = sg.Text("Size")
 size_text = sg.Input(key='size',size=(5))
 unit_combo = sg.Combo([],key='units',size=7)
 
+add_button = sg.Button('Add item',key='add')
+cancel_button = sg.Cancel()
+
 layout = [
     [brand_label,brand_combo],
     [desc_label,desc_text],
     [alt_label,alt_text],
     [upc_label,upc_text],
     [num_label,num_text],
-    [size_label,size_text,unit_combo]
+    [size_label,size_text,unit_combo],
+    [add_button,cancel_button]
 ]
 
 window = sg.Window('Add item',layout,finalize=True,enable_close_attempted_event=True)
