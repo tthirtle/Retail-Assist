@@ -54,7 +54,7 @@ def create_db():
             """CREATE TABLE "brands" (
             "key"   INTEGER,
             "brand" TEXT,
-            "code,  TEXT,
+            "code"  TEXT,
             PRIMARY KEY("key" AUTOINCREMENT)
             )"""
         )
@@ -82,7 +82,7 @@ def add_store():
 def brand_check(upc:str):
     from _global import auto_brand_lookup
     if auto_brand_lookup == False or len(upc) != 11:
-        return
+        return ''
     lookup = upc[:6]
     with sqlite3.connect(database_file) as con:
         cur = con.cursor()
@@ -94,3 +94,9 @@ def brand_check(upc:str):
             return ''
         else:
             return brand
+
+def add_brand(brand:str,upc:str):
+    brand_code = upc[:6]
+    with sqlite3.connect(database_file) as con:
+        cur = con.cursor()
+        cur.execute("""INSERT INTO "main"."brand" VALUES(?,?)"""),()

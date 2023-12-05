@@ -51,12 +51,11 @@ class user:
 current_item = None
 
 class item:
-    def __init__(self,desc:str,upc:str,alt_desc:str=None,num:str=None,alt_lookup:str=None,brand:str=None,size:str=None,units:str=None) -> None:
+    def __init__(self,desc:str,upc:str,alt_desc:str=None,num:str=None,brand:str=None,size:str=None,units:str=None) -> None:
         self.desc = desc
         self.upc = upc
         self.alt_desc = alt_desc
         self.num = num # Internal reorder number if diffrent from UPC
-        self.alt_lookup = alt_lookup
         self.brand = brand
         self.size = size # Numeric size
         self.units = units # Units (gal,Oz,g...)
@@ -68,8 +67,6 @@ class item:
         return self.upc
     def get_num(self):
         return self.num
-    def get_alt_lookup(self):
-        return self.alt_lookup
     def get_brand(self):
         return self.brand
     def get_size(self):
